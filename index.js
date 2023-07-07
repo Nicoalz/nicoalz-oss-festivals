@@ -40,3 +40,42 @@ export const getFestivalsByMonth = async (month) => {
   const response = await axios.get(url);
   return response.data.records;
 };
+
+/**
+ *
+ * @param {string} region : Use region name. Ex: 'Auvergne-Rhône-Alpes'
+ * @returns {Promise<Array>} : array of festivals, docs: https://data.culture.gouv.fr/explore/dataset/panorama-des-festivals/api/
+ */
+export const getFestivalsByRegion = async (region) => {
+  const url = `${BASE_URL}&refine.region=${region}`;
+  const response = await axios.get(url);
+  if (response.data.nhits === 0) throw new Error("Invalid region");
+  return response.data.records;
+};
+
+/**
+ *
+ * @param {string} theme : Use theme name. Ex: 'Musiques actuelles'
+ * @returns  {Promise<Array>} : array of festivals, docs: https://data.culture.gouv.fr/explore/dataset/panorama-des-festivals/api/
+ */
+export const getFestivalsByDomaine = async (theme) => {
+  const url = `${BASE_URL}&refine.domaine=${theme}`;
+  const response = await axios.get(url);
+  if (response.data.nhits === 0) throw new Error("Invalid domaine");
+  return response.data.records;
+};
+
+/**
+ *
+ * @param {{filter:string,value:string}[]} filters : Only a wrong value of a correct filter will throw an error
+ * @returns {Promise<Array>} : array of festivals, docs: https://data.culture.gouv.fr/explore/dataset/panorama-des-festivals/api/
+ */
+export const getFestivalsByFilters = async (filters) => {
+  const filterParam = filters
+    .map(({ filter, value }) => `refine.${filter}=${value}`)
+    .join("&");
+  const url = `${BASE_URL}&${filterParam}`;
+  const response = await axios.get(url);
+  if (response.data.nhits === 0) throw new Error("Invalid filters");
+  return response.data.records;
+};

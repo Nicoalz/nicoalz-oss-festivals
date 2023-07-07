@@ -43,7 +43,7 @@ export const getFestivalsByMonth = async (month) => {
 
 /**
  *
- * @param {string} region : Use region name. Ex: 'Auvergne-Rhône-Alpes'
+ * @param {string} region : Use region name. eg: 'Auvergne-Rhône-Alpes'
  * @returns {Promise<Array>} : array of festivals, docs: https://data.culture.gouv.fr/explore/dataset/panorama-des-festivals/api/
  */
 export const getFestivalsByRegion = async (region) => {
@@ -55,7 +55,7 @@ export const getFestivalsByRegion = async (region) => {
 
 /**
  *
- * @param {string} theme : Use theme name. Ex: 'Musiques actuelles'
+ * @param {string} theme : Use theme name. eg: 'Musiques actuelles'
  * @returns  {Promise<Array>} : array of festivals, docs: https://data.culture.gouv.fr/explore/dataset/panorama-des-festivals/api/
  */
 export const getFestivalsByDomaine = async (theme) => {
@@ -67,7 +67,7 @@ export const getFestivalsByDomaine = async (theme) => {
 
 /**
  *
- * @param {{filter:string,value:string}[]} filters : Only a wrong value of a correct filter will throw an error
+ * @param {{filter:string,value:string}[]} filters eg: {filter:'region',value:'Auvergne-Rhône-Alpes'} /  Only a wrong value of a correct filter will throw an error 
  * @returns {Promise<Array>} : array of festivals, docs: https://data.culture.gouv.fr/explore/dataset/panorama-des-festivals/api/
  */
 export const getFestivalsByFilters = async (filters) => {

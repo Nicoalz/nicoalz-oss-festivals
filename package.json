@@ -1,6 +1,6 @@
 {
   "name": "nicoalz-oss-festivals",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A beautiful demo package",
   "main": "index.js",
   "scripts": {
